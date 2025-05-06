@@ -9,6 +9,8 @@ export class Play extends Scene
 
     create ()
     {
-        this.add.image(512, 384, 'gound');
+      this.add
+        .tileSprite(0, 340, 88, 26, 'ground')
+        .setOrigin(0, 1);
     }
 }
