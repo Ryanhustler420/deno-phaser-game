@@ -20,7 +20,7 @@ export class Play extends Scene
 
     createPlayer()
     {
-      this.physics.add.sprite(0, this.canvasHeight, "dino-idle").setOrigin(0, 1);
+      this.physics.add.sprite(0, this.canvasHeight, "dino-idle").setOrigin(0, 1).setScale(.7);
     }
 
     createEnvironment()
