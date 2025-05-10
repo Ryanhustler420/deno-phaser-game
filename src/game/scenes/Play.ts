@@ -24,6 +24,10 @@ export class Play extends Scene
     createPlayer()
     {
       this.player = this.physics.add.sprite(0, this.canvasHeight, "dino-idle").setOrigin(0, 1).setScale(.7);
+      this.player
+        .setGravityY(5000)
+        .setCollideWorldBounds(true)
+        .setBodySize(44, 92);
     }
 
     createEnvironment()
