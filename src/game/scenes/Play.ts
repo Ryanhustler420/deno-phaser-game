@@ -41,6 +41,7 @@ export class Play extends Scene
           delay: 1000/60, // 16.66666... 60 FPS
           loop: true,
           callback: () => {
+            this.player.playRunAnimation();
             this.player.setVelocityX(80);
             this.ground.width += (17*2);
 
