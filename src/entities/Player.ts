@@ -33,6 +33,13 @@ export class Player extends Phaser.Physics.Arcade.Sprite
         if (isSpaceJustDown && onFloor) {
             this.setVelocityY(-1600);
         }
+
+        if (this.body!.deltaAbsY() > 2.0) {
+            this.anims.stop();
+            this.setTexture("dino-run", 0); // lock the sprite to 1st frame
+        } else {
+            this.playRunAnimation();
+        }
     }
 
     playRunAnimation()
