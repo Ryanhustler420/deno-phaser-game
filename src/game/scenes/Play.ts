@@ -37,12 +37,17 @@ export class Play extends Scene
         }
 
         this.startTrigger.body.reset(9999, 9999); // outside the game window
-        this.time.addEvent({
+        const rollOutEvent = this.time.addEvent({
           delay: 1000/60, // 16.66666... 60 FPS
           loop: true,
           callback: () => {
-            if (this.ground.width <= this.canvasWidth) {
-              this.ground.width += (17*2);
+            this.player.setVelocityX(80);
+            this.ground.width += (17*2);
+
+            if (this.ground.width >= this.canvasWidth) {
+              rollOutEvent.remove();
+              this.ground.width = this.canvasWidth;
+              this.player.setVelocityX(0);
             }
           }
         });
