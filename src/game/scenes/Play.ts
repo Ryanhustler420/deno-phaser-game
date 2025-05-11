@@ -26,7 +26,13 @@ export class Play extends Scene
         .setOrigin(0, 1);
 
       this.physics.add.overlap(this.startTrigger, this.player, () => {
-        console.log("COLISION!");
+        if (this.startTrigger.y === 40) {
+          this.startTrigger.body.reset(0, this.canvasHeight);
+          return;
+        }
+
+        this.startTrigger.body.reset(9999, 9999); // outside the game window
+        console.log("Roll out the ground and start the game!");
       });
     }
 
