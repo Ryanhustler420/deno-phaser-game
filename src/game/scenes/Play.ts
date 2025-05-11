@@ -1,9 +1,10 @@
 import { Scene } from 'phaser';
+import { Player } from '../../entities/Player';
 
 export class Play extends Scene
 {
 
-    player: SpriteWithDynamicBody;
+    player: Player;
     startTrigger: SpriteWithDynamicBody;
 
     get canvasHeight () {
@@ -33,11 +34,7 @@ export class Play extends Scene
 
     createPlayer()
     {
-      this.player = this.physics.add.sprite(0, this.canvasHeight, "dino-idle").setOrigin(0, 1).setScale(.7);
-      this.player
-        .setGravityY(5000)
-        .setCollideWorldBounds(true)
-        .setBodySize(44, 92);
+      this.player = new Player(this, 0, this.canvasHeight);
     }
 
     createEnvironment()
