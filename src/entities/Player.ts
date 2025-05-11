@@ -17,5 +17,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite
             .setScale(.7)
             .setCollideWorldBounds(true)
             .setBodySize(44, 92);
+        
+        this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
+    }
+    
+    update(): void {
+        
     }
 }

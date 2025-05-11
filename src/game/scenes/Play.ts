@@ -25,8 +25,6 @@ export class Play extends Scene
         .setAlpha(0)
         .setOrigin(0, 1);
 
-      this.registerPlayerControl();
-
       this.physics.add.overlap(this.startTrigger, this.player, () => {
         console.log("COLISION!");
       });
@@ -44,10 +42,4 @@ export class Play extends Scene
         .setOrigin(0, 1);
     }
 
-    registerPlayerControl() {
-      const spaceBar = this.input.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-      spaceBar?.on("down", () => {
-        this.player.setVelocityY(-1600);
-      });
-    }
 }
