@@ -5,10 +5,15 @@ export class Play extends Scene
 {
 
     player: Player;
+    ground: Phaser.GameObjects.TileSprite;
     startTrigger: SpriteWithDynamicBody;
 
     get canvasHeight () {
       return this.game.config.height as number;
+    }
+
+    get canvasWidth () {
+      return this.game.config.width as number;
     }
 
     constructor ()
@@ -32,7 +37,15 @@ export class Play extends Scene
         }
 
         this.startTrigger.body.reset(9999, 9999); // outside the game window
-        console.log("Roll out the ground and start the game!");
+        this.time.addEvent({
+          delay: 1000/60, // 16.66666... 60 FPS
+          loop: true,
+          callback: () => {
+            if (this.ground.width <= this.canvasWidth) {
+              this.ground.width += (17*2);
+            }
+          }
+        });
       });
     }
 
@@ -43,7 +56,7 @@ export class Play extends Scene
 
     createEnvironment()
     {
-      this.add
+      this.ground = this.add
         .tileSprite(0, this.canvasHeight, 88, 26, 'ground')
         .setOrigin(0, 1);
     }
