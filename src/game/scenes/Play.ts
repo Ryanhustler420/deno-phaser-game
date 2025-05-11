@@ -4,6 +4,7 @@ export class Play extends Scene
 {
 
     player: SpriteWithDynamicBody;
+    startTrigger: SpriteWithDynamicBody;
 
     get canvasHeight () {
       return this.game.config.height as number;
@@ -18,7 +19,16 @@ export class Play extends Scene
     {
       this.createEnvironment();
       this.createPlayer();
+
+      this.startTrigger = this.physics.add.sprite(0, 40, "null")
+        .setAlpha(0)
+        .setOrigin(0, 1);
+
       this.registerPlayerControl();
+
+      this.physics.add.overlap(this.startTrigger, this.player, () => {
+        console.log("COLISION!");
+      });
     }
 
     createPlayer()
